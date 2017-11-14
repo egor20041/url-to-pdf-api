@@ -25,12 +25,6 @@ RUN apt-get update && apt-get install -y wget --no-install-recommends \
 # Install puppeteer so it's available in the container.
 RUN yarn add puppeteer
 
-# Add pptr user.
-RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
-    && mkdir -p /home/pptruser/Downloads \
-    && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /node_modules
-
 RUN mkdir -p /opt/url_to_pdf/logs/
 
 WORKDIR /opt/url_to_pdf/
@@ -40,6 +34,12 @@ COPY src /opt/url_to_pdf/
 COPY package.json /opt/url_to_pdf/
 
 RUN npm install
+
+# Add pptr user.
+RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
+    && mkdir -p /home/pptruser/Downloads \
+    && chown -R pptruser:pptruser /home/pptruser \
+    && chown -R pptruser:pptruser node_modules
 
 COPY start.sh /opt/url_to_pdf/
 
