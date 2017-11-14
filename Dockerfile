@@ -1,7 +1,7 @@
 FROM node:8.9.1
 MAINTAINER Yegor Rzhavsky <rzhavsky@digops.com>
 
-RUNapt-get -y install --fix-missing yarn
+RUN apt-get -y install --fix-missing yarn
 
 # Install latest chrome dev package.
 # Note: this installs the necessary libs to make the bundled version of Chromium that Pupppeteer
