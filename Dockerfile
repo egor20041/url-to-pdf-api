@@ -9,6 +9,6 @@ COPY src .
 
 WORKDIR /opt/url_to_pdf/src/
 
-RUN NODE_ENV=$NODE_VERSION node index.js >> last_deploy_js.log 2>&1;
+CMD NODE_ENV=$NODE_VERSION node index.js
 
-EXPOSE 80
+EXPOSE 9000
