@@ -5,9 +5,11 @@ RUN mkdir -p /opt/url_to_pdf/logs/
 
 WORKDIR /opt/url_to_pdf/
 
-COPY src .
+COPY src /opt/url_to_pdf/
 
-COPY start.sh .
+COPY node_modules /opt/url_to_pdf/
+
+COPY start.sh /opt/url_to_pdf/
 
 CMD /opt/url_to_pdf/start.sh
 
