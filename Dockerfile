@@ -7,7 +7,7 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 
 RUN apt-get -y install --fix-missing apt-transport-https ca-certificates
 
-RUN apt-get update && apt-get install yarn
+RUN apt-get update && apt-get -y install --fix-missing yarn
 
 # Install latest chrome dev package.
 # Note: this installs the necessary libs to make the bundled version of Chromium that Pupppeteer
