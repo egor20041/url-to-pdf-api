@@ -1,0 +1,27 @@
+FROM ubuntu:16.04
+MAINTAINER Yegor Rzhavsky <rzhavsky@digops.com>
+
+ARG GIT_BRANCH
+
+RUN DEBIAN_FRONTEND=noninteractive
+
+# Update apt-get local index
+RUN apt-get -qq update --fix-missing
+
+# Install
+RUN apt-get -y install --fix-missing nginx inetutils-ping less telnet rsyslog ssh curl vim nano wget git g++ make
+
+RUN mkdir -p /tmp/node
+
+WORKDIR /tmp/node
+
+ENV NODE_VERSION 8.9.1
+
+ENV NODE_ENV production
+
+RUN curl -SLO "http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" \
+    && tar -xzf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1 \
+    && rm "node-v$NODE_VERSION-linux-x64.tar.gz" \
+    && rm -rf /tmp/*
+
+
