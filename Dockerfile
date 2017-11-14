@@ -7,8 +7,8 @@ WORKDIR /opt/url_to_pdf/
 
 COPY src .
 
-WORKDIR /opt/url_to_pdf/src/
+COPY start.sh .
 
-CMD NODE_ENV=$NODE_VERSION node index.js
+CMD /opt/url_to_pdf/start.sh
 
 EXPOSE 9000
