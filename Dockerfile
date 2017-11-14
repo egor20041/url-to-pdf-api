@@ -7,7 +7,9 @@ WORKDIR /opt/url_to_pdf/
 
 COPY src /opt/url_to_pdf/
 
-COPY node_modules /opt/url_to_pdf/node_modules/
+COPY package.json /opt/url_to_pdf/
+
+RUN npm install
 
 COPY start.sh /opt/url_to_pdf/
 
