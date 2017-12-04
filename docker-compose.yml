@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+
+    url2pdf:
+      container_name: url2pdf
+      image: url2pdf
+      ports:
+        - 9000:9000
+      restart: always
